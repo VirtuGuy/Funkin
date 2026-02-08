@@ -983,7 +983,6 @@ class FreeplayState extends MusicBeatSubState
 
     var hsvShader:HSVShader = new HSVShader();
     randomCapsule.hsvShader = hsvShader;
-    grpCapsules.add(randomCapsule);
 
     for (i in 0...tempSongs.length)
     {
@@ -1005,8 +1004,6 @@ class FreeplayState extends MusicBeatSubState
       if (fromCharSelect || forceSkipIntro || noJumpIn) funnyMenu.forcePosition();
       else
         funnyMenu.initJumpIn(0, force);
-
-      grpCapsules.add(funnyMenu);
     }
 
     FlxG.console.registerFunction('changeSelection', changeSelection);
