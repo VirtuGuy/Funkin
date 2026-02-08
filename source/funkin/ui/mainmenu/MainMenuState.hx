@@ -310,7 +310,8 @@ class MainMenuState extends MusicBeatState
   {
     if (leftWatermarkText == null) return;
 
-    leftWatermarkText.text = Constants.VERSION;
+    leftWatermarkText.text = 'Cable Engine v' + Constants.CABLE_VERSION;
+    leftWatermarkText.text += '\n' + Constants.VERSION;
 
     #if FEATURE_NEWGROUNDS
     if (NewgroundsClient.instance.isLoggedIn())
@@ -318,6 +319,8 @@ class MainMenuState extends MusicBeatState
       leftWatermarkText.text += ' | Newgrounds: Logged in as ${NewgroundsClient.instance.user?.name}';
     }
     #end
+
+    leftWatermarkText.y -= 18;
   }
 
   function playMenuMusic():Void
