@@ -32,66 +32,66 @@ class FunkinMemory
    */
   public static inline function initialCache():Void
   {
-    var allImages:Array<String> = Assets.list();
+    // var allImages:Array<String> = Assets.list();
 
-    for (file in allImages)
-    {
-      if (!(file.endsWith(".png") #if FEATURE_COMPRESSED_TEXTURES || file.endsWith(".astc") #end)
-        || file.contains("chart-editor")
-        || !file.contains("ui/"))
-      {
-        continue;
-      }
+    // for (file in allImages)
+    // {
+    //   if (!(file.endsWith(".png") #if FEATURE_COMPRESSED_TEXTURES || file.endsWith(".astc") #end)
+    //     || file.contains("chart-editor")
+    //     || !file.contains("ui/"))
+    //   {
+    //     continue;
+    //   }
 
-      file = file.replace(" ", ""); // Handle stray spaces.
+    //   file = file.replace(" ", ""); // Handle stray spaces.
 
-      if (file.contains("shared") || Assets.exists('shared:$file', AssetType.IMAGE))
-      {
-        file = 'shared:$file';
-      }
-      permanentCacheTexture(file);
-    }
+    //   if (file.contains("shared") || Assets.exists('shared:$file', AssetType.IMAGE))
+    //   {
+    //     file = 'shared:$file';
+    //   }
+    //   permanentCacheTexture(file);
+    // }
 
-    permanentCacheTexture(Paths.image("healthBar"));
-    permanentCacheTexture(Paths.image("menuDesat"));
-    permanentCacheTexture(Paths.image("notes", "shared"));
-    permanentCacheTexture(Paths.image("noteSplashes", "shared"));
-    permanentCacheTexture(Paths.image("noteStrumline", "shared"));
-    permanentCacheTexture(Paths.image("NOTE_hold_assets"));
-    // dude
-    permanentCacheTexture(Paths.image("fonts/bold", null));
-    permanentCacheTexture(Paths.image("fonts/default", null));
-    permanentCacheTexture(Paths.image("fonts/freeplay-clear", null));
+    // permanentCacheTexture(Paths.image("healthBar"));
+    // permanentCacheTexture(Paths.image("menuDesat"));
+    // permanentCacheTexture(Paths.image("notes", "shared"));
+    // permanentCacheTexture(Paths.image("noteSplashes", "shared"));
+    // permanentCacheTexture(Paths.image("noteStrumline", "shared"));
+    // permanentCacheTexture(Paths.image("NOTE_hold_assets"));
+    // // dude
+    // permanentCacheTexture(Paths.image("fonts/bold", null));
+    // permanentCacheTexture(Paths.image("fonts/default", null));
+    // permanentCacheTexture(Paths.image("fonts/freeplay-clear", null));
 
-    var allSounds:Array<String> = Assets.list(AssetType.SOUND);
+    // var allSounds:Array<String> = Assets.list(AssetType.SOUND);
 
-    for (file in allSounds)
-    {
-      if (!file.endsWith(".ogg") || !file.contains("countdown/")) continue;
+    // for (file in allSounds)
+    // {
+    //   if (!file.endsWith(".ogg") || !file.contains("countdown/")) continue;
 
-      file = file.replace(" ", "");
+    //   file = file.replace(" ", "");
 
-      if (file.contains("shared") || Assets.exists('shared:$file', AssetType.SOUND))
-      {
-        file = 'shared:$file';
-      }
+    //   if (file.contains("shared") || Assets.exists('shared:$file', AssetType.SOUND))
+    //   {
+    //     file = 'shared:$file';
+    //   }
 
-      permanentCacheSound(file);
-    }
+    //   permanentCacheSound(file);
+    // }
 
-    permanentCacheSound(Paths.sound("cancelMenu"));
-    permanentCacheSound(Paths.sound("confirmMenu"));
-    permanentCacheSound(Paths.sound("screenshot"));
-    permanentCacheSound(Paths.sound("scrollMenu"));
-    permanentCacheSound(Paths.sound("soundtray/Voldown"));
-    permanentCacheSound(Paths.sound("soundtray/VolMAX"));
-    permanentCacheSound(Paths.sound("soundtray/Volup"));
-    permanentCacheSound(Paths.music("freakyMenu/freakyMenu"));
-    permanentCacheSound(Paths.music("offsetsLoop/offsetsLoop"));
-    permanentCacheSound(Paths.music("offsetsLoop/drumsLoop"));
-    permanentCacheSound(Paths.sound("missnote1", "shared"));
-    permanentCacheSound(Paths.sound("missnote2", "shared"));
-    permanentCacheSound(Paths.sound("missnote3", "shared"));
+    // permanentCacheSound(Paths.sound("cancelMenu"));
+    // permanentCacheSound(Paths.sound("confirmMenu"));
+    // permanentCacheSound(Paths.sound("screenshot"));
+    // permanentCacheSound(Paths.sound("scrollMenu"));
+    // permanentCacheSound(Paths.sound("soundtray/Voldown"));
+    // permanentCacheSound(Paths.sound("soundtray/VolMAX"));
+    // permanentCacheSound(Paths.sound("soundtray/Volup"));
+    // permanentCacheSound(Paths.music("freakyMenu/freakyMenu"));
+    // permanentCacheSound(Paths.music("offsetsLoop/offsetsLoop"));
+    // permanentCacheSound(Paths.music("offsetsLoop/drumsLoop"));
+    // permanentCacheSound(Paths.sound("missnote1", "shared"));
+    // permanentCacheSound(Paths.sound("missnote2", "shared"));
+    // permanentCacheSound(Paths.sound("missnote3", "shared"));
   }
 
   /**
@@ -100,13 +100,13 @@ class FunkinMemory
    */
   public static inline function purgeCache(callGarbageCollector:Bool = false):Void
   {
-    preparePurgeTextureCache();
-    purgeTextureCache();
-    preparePurgeSoundCache();
-    purgeSoundCache();
-    #if (cpp || neko || hl)
-    if (callGarbageCollector) funkin.util.MemoryUtil.collect(true);
-    #end
+    // preparePurgeTextureCache();
+    // purgeTextureCache();
+    // preparePurgeSoundCache();
+    // purgeSoundCache();
+    // #if (cpp || neko || hl)
+    // if (callGarbageCollector) funkin.util.MemoryUtil.collect(true);
+    // #end
   }
 
   ///// TEXTURES /////
@@ -117,28 +117,28 @@ class FunkinMemory
    */
   public static function cacheTexture(key:String):Void
   {
-    if (currentCachedTextures.exists(key)) return;
+    // if (currentCachedTextures.exists(key)) return;
 
-    if (previousCachedTextures.exists(key))
-    {
-      // Move the texture from the previous cache to the current cache.
-      var graphic:Null<FlxGraphic> = previousCachedTextures.get(key);
-      previousCachedTextures.remove(key);
-      if (graphic != null) currentCachedTextures.set(key, graphic);
-      return;
-    }
+    // if (previousCachedTextures.exists(key))
+    // {
+    //   // Move the texture from the previous cache to the current cache.
+    //   var graphic:Null<FlxGraphic> = previousCachedTextures.get(key);
+    //   previousCachedTextures.remove(key);
+    //   if (graphic != null) currentCachedTextures.set(key, graphic);
+    //   return;
+    // }
 
-    var graphic:Null<FlxGraphic> = FlxGraphic.fromAssetKey(key, false, null, true);
-    if (graphic == null)
-    {
-      FlxG.log.warn('Failed to cache graphic: $key');
-      return;
-    }
+    // var graphic:Null<FlxGraphic> = FlxGraphic.fromAssetKey(key, false, null, true);
+    // if (graphic == null)
+    // {
+    //   FlxG.log.warn('Failed to cache graphic: $key');
+    //   return;
+    // }
 
-    log('Cached asset $key');
-    graphic.persist = true;
-    currentCachedTextures.set(key, graphic);
-    forceRender(graphic);
+    // log('Cached asset $key');
+    // graphic.persist = true;
+    // currentCachedTextures.set(key, graphic);
+    // forceRender(graphic);
   }
 
   /**
@@ -147,27 +147,27 @@ class FunkinMemory
    */
   static function permanentCacheTexture(key:String):Void
   {
-    if (permanentCachedTextures.exists(key)) return;
+    // if (permanentCachedTextures.exists(key)) return;
 
-    var graphic:Null<FlxGraphic> = FlxGraphic.fromAssetKey(key, false, null, true);
-    if (graphic == null)
-    {
-      FlxG.log.warn('Failed to cache graphic: $key');
-      return;
-    }
+    // var graphic:Null<FlxGraphic> = FlxGraphic.fromAssetKey(key, false, null, true);
+    // if (graphic == null)
+    // {
+    //   FlxG.log.warn('Failed to cache graphic: $key');
+    //   return;
+    // }
 
-    log('Cached graphic $key');
-    graphic.persist = true;
-    permanentCachedTextures.set(key, graphic);
-    forceRender(graphic);
-    currentCachedTextures = permanentCachedTextures.copy();
+    // log('Cached graphic $key');
+    // graphic.persist = true;
+    // permanentCachedTextures.set(key, graphic);
+    // forceRender(graphic);
+    // currentCachedTextures = permanentCachedTextures.copy();
   }
 
   public static function getCachedGraphic(path:String):Null<FlxGraphic>
   {
-    if (permanentCachedTextures.exists(path)) return permanentCachedTextures.get(path);
-    if (currentCachedTextures.exists(path)) return currentCachedTextures.get(path);
-    if (previousCachedTextures.exists(path)) return previousCachedTextures.get(path); // just in case
+    // if (permanentCachedTextures.exists(path)) return permanentCachedTextures.get(path);
+    // if (currentCachedTextures.exists(path)) return currentCachedTextures.get(path);
+    // if (previousCachedTextures.exists(path)) return previousCachedTextures.get(path); // just in case
 
     return null;
   }
@@ -177,17 +177,17 @@ class FunkinMemory
    */
   public inline static function preparePurgeTextureCache():Void
   {
-    previousCachedTextures = currentCachedTextures.copy();
+    // previousCachedTextures = currentCachedTextures.copy();
 
-    for (graphicKey in previousCachedTextures.keys())
-    {
-      if (permanentCachedTextures.exists(graphicKey))
-      {
-        previousCachedTextures.remove(graphicKey);
-      }
-    }
+    // for (graphicKey in previousCachedTextures.keys())
+    // {
+    //   if (permanentCachedTextures.exists(graphicKey))
+    //   {
+    //     previousCachedTextures.remove(graphicKey);
+    //   }
+    // }
 
-    currentCachedTextures = permanentCachedTextures.copy();
+    // currentCachedTextures = permanentCachedTextures.copy();
   }
 
   /**
@@ -195,56 +195,56 @@ class FunkinMemory
    */
   public static function purgeTextureCache():Void
   {
-    for (graphicKey in previousCachedTextures.keys())
-    {
-      if (permanentCachedTextures.exists(graphicKey))
-      {
-        previousCachedTextures.remove(graphicKey);
-        continue;
-      }
+    // for (graphicKey in previousCachedTextures.keys())
+    // {
+    //   if (permanentCachedTextures.exists(graphicKey))
+    //   {
+    //     previousCachedTextures.remove(graphicKey);
+    //     continue;
+    //   }
 
-      if (graphicKey.contains("fonts")) continue;
+    //   if (graphicKey.contains("fonts")) continue;
 
-      var graphic:Null<FlxGraphic> = previousCachedTextures.get(graphicKey);
-      if (graphic != null)
-      {
-        FlxG.bitmap.remove(graphic);
-        graphic.persist = false;
-        graphic.destroy();
-        previousCachedTextures.remove(graphicKey);
-        Assets.cache.clear(graphicKey);
-      }
-    }
-    @:privateAccess
-    if (FlxG.bitmap._cache == null)
-    {
-      @:privateAccess
-      FlxG.bitmap._cache = new Map();
-    }
+    //   var graphic:Null<FlxGraphic> = previousCachedTextures.get(graphicKey);
+    //   if (graphic != null)
+    //   {
+    //     FlxG.bitmap.remove(graphic);
+    //     graphic.persist = false;
+    //     graphic.destroy();
+    //     previousCachedTextures.remove(graphicKey);
+    //     Assets.cache.clear(graphicKey);
+    //   }
+    // }
+    // @:privateAccess
+    // if (FlxG.bitmap._cache == null)
+    // {
+    //   @:privateAccess
+    //   FlxG.bitmap._cache = new Map();
+    // }
 
-    @:privateAccess
-    for (key in FlxG.bitmap._cache.keys())
-    {
-      var obj:Null<FlxGraphic> = FlxG.bitmap.get(key);
+    // @:privateAccess
+    // for (key in FlxG.bitmap._cache.keys())
+    // {
+    //   var obj:Null<FlxGraphic> = FlxG.bitmap.get(key);
 
-      if (obj == null || (obj.persist && permanentCachedTextures.exists(key)) || key.contains("fonts"))
-      {
-        continue;
-      }
+    //   if (obj == null || (obj.persist && permanentCachedTextures.exists(key)) || key.contains("fonts"))
+    //   {
+    //     continue;
+    //   }
 
-      if (obj.useCount > 0)
-      {
-        for (purgeEntry in purgeFilter)
-        {
-          if (key.contains(purgeEntry))
-          {
-            FlxG.bitmap.removeKey(key);
-            obj.persist = false;
-            obj.destroy();
-          }
-        }
-      }
-    }
+    //   if (obj.useCount > 0)
+    //   {
+    //     for (purgeEntry in purgeFilter)
+    //     {
+    //       if (key.contains(purgeEntry))
+    //       {
+    //         FlxG.bitmap.removeKey(key);
+    //         obj.persist = false;
+    //         obj.destroy();
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   /**
@@ -285,42 +285,42 @@ class FunkinMemory
    */
   public static function cacheNoteStyle(style:NoteStyle):Void
   {
-    // TODO: Texture paths should fall back to the default values.
-    cacheTexture(Paths.image(style.getNoteAssetPath() ?? "note"));
-    cacheTexture(style.getHoldNoteAssetPath() ?? "noteHold");
-    cacheTexture(Paths.image(style.getStrumlineAssetPath() ?? "strumline"));
-    cacheTexture(Paths.image(style.getSplashAssetPath() ?? "noteSplash"));
+    // // TODO: Texture paths should fall back to the default values.
+    // cacheTexture(Paths.image(style.getNoteAssetPath() ?? "note"));
+    // cacheTexture(style.getHoldNoteAssetPath() ?? "noteHold");
+    // cacheTexture(Paths.image(style.getStrumlineAssetPath() ?? "strumline"));
+    // cacheTexture(Paths.image(style.getSplashAssetPath() ?? "noteSplash"));
 
-    cacheTexture(Paths.image(style.getHoldCoverDirectionAssetPath(LEFT) ?? "LEFT"));
-    cacheTexture(Paths.image(style.getHoldCoverDirectionAssetPath(RIGHT) ?? "RIGHT"));
-    cacheTexture(Paths.image(style.getHoldCoverDirectionAssetPath(UP) ?? "UP"));
-    cacheTexture(Paths.image(style.getHoldCoverDirectionAssetPath(DOWN) ?? "DOWN"));
+    // cacheTexture(Paths.image(style.getHoldCoverDirectionAssetPath(LEFT) ?? "LEFT"));
+    // cacheTexture(Paths.image(style.getHoldCoverDirectionAssetPath(RIGHT) ?? "RIGHT"));
+    // cacheTexture(Paths.image(style.getHoldCoverDirectionAssetPath(UP) ?? "UP"));
+    // cacheTexture(Paths.image(style.getHoldCoverDirectionAssetPath(DOWN) ?? "DOWN"));
 
-    // cacheTexture(Paths.image(style.buildCountdownSpritePath(THREE) ?? "THREE"));
-    cacheTexture(Paths.image(style.buildCountdownSpritePath(TWO) ?? "TWO"));
-    cacheTexture(Paths.image(style.buildCountdownSpritePath(ONE) ?? "ONE"));
-    cacheTexture(Paths.image(style.buildCountdownSpritePath(GO) ?? "GO"));
+    // // cacheTexture(Paths.image(style.buildCountdownSpritePath(THREE) ?? "THREE"));
+    // cacheTexture(Paths.image(style.buildCountdownSpritePath(TWO) ?? "TWO"));
+    // cacheTexture(Paths.image(style.buildCountdownSpritePath(ONE) ?? "ONE"));
+    // cacheTexture(Paths.image(style.buildCountdownSpritePath(GO) ?? "GO"));
 
-    cacheSound(style.getCountdownSoundPath(THREE) ?? "THREE");
-    cacheSound(style.getCountdownSoundPath(TWO) ?? "TWO");
-    cacheSound(style.getCountdownSoundPath(ONE) ?? "ONE");
-    cacheSound(style.getCountdownSoundPath(GO) ?? "GO");
+    // cacheSound(style.getCountdownSoundPath(THREE) ?? "THREE");
+    // cacheSound(style.getCountdownSoundPath(TWO) ?? "TWO");
+    // cacheSound(style.getCountdownSoundPath(ONE) ?? "ONE");
+    // cacheSound(style.getCountdownSoundPath(GO) ?? "GO");
 
-    cacheTexture(Paths.image(style.buildJudgementSpritePath("sick") ?? 'sick'));
-    cacheTexture(Paths.image(style.buildJudgementSpritePath("good") ?? 'good'));
-    cacheTexture(Paths.image(style.buildJudgementSpritePath("bad") ?? 'bad'));
-    cacheTexture(Paths.image(style.buildJudgementSpritePath("shit") ?? 'shit'));
+    // cacheTexture(Paths.image(style.buildJudgementSpritePath("sick") ?? 'sick'));
+    // cacheTexture(Paths.image(style.buildJudgementSpritePath("good") ?? 'good'));
+    // cacheTexture(Paths.image(style.buildJudgementSpritePath("bad") ?? 'bad'));
+    // cacheTexture(Paths.image(style.buildJudgementSpritePath("shit") ?? 'shit'));
 
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(0) ?? '0'));
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(1) ?? '1'));
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(2) ?? '2'));
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(3) ?? '3'));
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(4) ?? '4'));
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(5) ?? '5'));
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(6) ?? '6'));
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(7) ?? '7'));
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(8) ?? '8'));
-    cacheTexture(Paths.image(style.buildComboNumSpritePath(9) ?? '9'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(0) ?? '0'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(1) ?? '1'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(2) ?? '2'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(3) ?? '3'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(4) ?? '4'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(5) ?? '5'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(6) ?? '6'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(7) ?? '7'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(8) ?? '8'));
+    // cacheTexture(Paths.image(style.buildComboNumSpritePath(9) ?? '9'));
   }
 
   ///// SOUND //////
@@ -331,21 +331,21 @@ class FunkinMemory
    */
   public static function cacheSound(key:String):Void
   {
-    if (currentCachedSounds.exists(key)) return;
+    // if (currentCachedSounds.exists(key)) return;
 
-    if (previousCachedSounds.exists(key))
-    {
-      // Move the texture from the previous cache to the current cache.
-      var sound:Null<Sound> = previousCachedSounds.get(key);
-      previousCachedSounds.remove(key);
-      if (sound != null) currentCachedSounds.set(key, sound);
-      return;
-    }
+    // if (previousCachedSounds.exists(key))
+    // {
+    //   // Move the texture from the previous cache to the current cache.
+    //   var sound:Null<Sound> = previousCachedSounds.get(key);
+    //   previousCachedSounds.remove(key);
+    //   if (sound != null) currentCachedSounds.set(key, sound);
+    //   return;
+    // }
 
-    var sound:Null<Sound> = Assets.getSound(key, true);
-    if (sound == null) return;
-    else
-      currentCachedSounds.set(key, sound);
+    // var sound:Null<Sound> = Assets.getSound(key, true);
+    // if (sound == null) return;
+    // else
+    //   currentCachedSounds.set(key, sound);
   }
 
   /**
@@ -354,14 +354,14 @@ class FunkinMemory
    */
   public static function permanentCacheSound(key:String):Void
   {
-    if (permanentCachedSounds.exists(key)) return;
+    // if (permanentCachedSounds.exists(key)) return;
 
-    var sound:Null<Sound> = Assets.getSound(key, true);
-    if (sound == null) return;
-    else
-      permanentCachedSounds.set(key, sound);
+    // var sound:Null<Sound> = Assets.getSound(key, true);
+    // if (sound == null) return;
+    // else
+    //   permanentCachedSounds.set(key, sound);
 
-    if (sound != null) currentCachedSounds.set(key, sound);
+    // if (sound != null) currentCachedSounds.set(key, sound);
   }
 
   /**
@@ -369,17 +369,17 @@ class FunkinMemory
    */
   public static function preparePurgeSoundCache():Void
   {
-    previousCachedSounds = currentCachedSounds.copy();
+    // previousCachedSounds = currentCachedSounds.copy();
 
-    for (key in previousCachedSounds.keys())
-    {
-      if (permanentCachedSounds.exists(key))
-      {
-        previousCachedSounds.remove(key);
-      }
-    }
+    // for (key in previousCachedSounds.keys())
+    // {
+    //   if (permanentCachedSounds.exists(key))
+    //   {
+    //     previousCachedSounds.remove(key);
+    //   }
+    // }
 
-    currentCachedSounds = permanentCachedSounds.copy();
+    // currentCachedSounds = permanentCachedSounds.copy();
   }
 
   /**
@@ -387,31 +387,31 @@ class FunkinMemory
    */
   public static inline function purgeSoundCache():Void
   {
-    for (key in previousCachedSounds.keys())
-    {
-      if (permanentCachedSounds.exists(key))
-      {
-        previousCachedSounds.remove(key);
-        continue;
-      }
+    // for (key in previousCachedSounds.keys())
+    // {
+    //   if (permanentCachedSounds.exists(key))
+    //   {
+    //     previousCachedSounds.remove(key);
+    //     continue;
+    //   }
 
-      var sound:Null<Sound> = previousCachedSounds.get(key);
-      if (sound != null)
-      {
-        Assets.cache.removeSound(key);
-        previousCachedSounds.remove(key);
-      }
-    }
-    Assets.cache.clear("songs");
-    Assets.cache.clear("music");
-    // Felt lazy.
-    var key = Paths.music("freakyMenu/freakyMenu");
-    var sound:Null<Sound> = Assets.getSound(key, true);
-    if (sound != null)
-    {
-      permanentCachedSounds.set(key, sound);
-      currentCachedSounds.set(key, sound);
-    }
+    //   var sound:Null<Sound> = previousCachedSounds.get(key);
+    //   if (sound != null)
+    //   {
+    //     Assets.cache.removeSound(key);
+    //     previousCachedSounds.remove(key);
+    //   }
+    // }
+    // Assets.cache.clear("songs");
+    // Assets.cache.clear("music");
+    // // Felt lazy.
+    // var key = Paths.music("freakyMenu/freakyMenu");
+    // var sound:Null<Sound> = Assets.getSound(key, true);
+    // if (sound != null)
+    // {
+    //   permanentCachedSounds.set(key, sound);
+    //   currentCachedSounds.set(key, sound);
+    // }
   }
 
   ///// MISC /////
@@ -421,33 +421,33 @@ class FunkinMemory
    */
   public static inline function clearFreeplay():Void
   {
-    var keysToRemove:Array<String> = [];
+    // var keysToRemove:Array<String> = [];
 
-    @:privateAccess
-    for (key in FlxG.bitmap._cache.keys())
-    {
-      if (!key.contains("freeplay")) continue;
-      if (permanentCachedTextures.exists(key) || key.contains("fonts")) continue;
+    // @:privateAccess
+    // for (key in FlxG.bitmap._cache.keys())
+    // {
+    //   if (!key.contains("freeplay")) continue;
+    //   if (permanentCachedTextures.exists(key) || key.contains("fonts")) continue;
 
-      keysToRemove.push(key);
-    }
+    //   keysToRemove.push(key);
+    // }
 
-    @:privateAccess
-    for (key in keysToRemove)
-    {
-      log('Cleaning asset $key');
-      var obj:Null<FlxGraphic> = FlxG.bitmap.get(key);
-      if (obj != null)
-      {
-        obj.destroy();
-      }
-      FlxG.bitmap.removeKey(key);
-      if (currentCachedTextures.exists(key)) currentCachedTextures.remove(key);
-      Assets.cache.clear(key);
-    }
+    // @:privateAccess
+    // for (key in keysToRemove)
+    // {
+    //   log('Cleaning asset $key');
+    //   var obj:Null<FlxGraphic> = FlxG.bitmap.get(key);
+    //   if (obj != null)
+    //   {
+    //     obj.destroy();
+    //   }
+    //   FlxG.bitmap.removeKey(key);
+    //   if (currentCachedTextures.exists(key)) currentCachedTextures.remove(key);
+    //   Assets.cache.clear(key);
+    // }
 
-    preparePurgeSoundCache();
-    purgeSoundCache();
+    // preparePurgeSoundCache();
+    // purgeSoundCache();
   }
 
   /**
@@ -455,30 +455,30 @@ class FunkinMemory
    */
   public static inline function clearStickers():Void
   {
-    var keysToRemove:Array<String> = [];
+    // var keysToRemove:Array<String> = [];
 
-    @:privateAccess
-    for (key in FlxG.bitmap._cache.keys())
-    {
-      if (!key.contains("stickers")) continue;
-      if (permanentCachedTextures.exists(key) || key.contains("fonts")) continue;
+    // @:privateAccess
+    // for (key in FlxG.bitmap._cache.keys())
+    // {
+    //   if (!key.contains("stickers")) continue;
+    //   if (permanentCachedTextures.exists(key) || key.contains("fonts")) continue;
 
-      keysToRemove.push(key);
-    }
+    //   keysToRemove.push(key);
+    // }
 
-    @:privateAccess
-    for (key in keysToRemove)
-    {
-      log('Cleaning asset $key');
-      var obj:Null<FlxGraphic> = FlxG.bitmap.get(key);
-      if (obj != null)
-      {
-        obj.destroy();
-      }
-      FlxG.bitmap.removeKey(key);
-      if (currentCachedTextures.exists(key)) currentCachedTextures.remove(key);
-      Assets.cache.clear(key);
-    }
+    // @:privateAccess
+    // for (key in keysToRemove)
+    // {
+    //   log('Cleaning asset $key');
+    //   var obj:Null<FlxGraphic> = FlxG.bitmap.get(key);
+    //   if (obj != null)
+    //   {
+    //     obj.destroy();
+    //   }
+    //   FlxG.bitmap.removeKey(key);
+    //   if (currentCachedTextures.exists(key)) currentCachedTextures.remove(key);
+    //   Assets.cache.clear(key);
+    // }
   }
 
   /**

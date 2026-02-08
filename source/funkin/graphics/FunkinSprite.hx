@@ -336,7 +336,7 @@ class FunkinSprite extends FlxAnimate
     }
 
     this.applyStageMatrix = settings.applyStageMatrix ?? false;
-    this.useRenderTexture = settings.useRenderTexture ?? false;
+    this.useRenderTexture = true;
 
     frames = Paths.getAnimateAtlas(key, assetLibrary, settings);
 

@@ -75,7 +75,7 @@ class Assets implements ConsoleClass
    */
   public static function getSound(path:String):openfl.media.Sound
   {
-    return openfl.utils.Assets.getSound(path);
+    return openfl.utils.Assets.getSound(path, false);
   }
 
   /**
@@ -85,7 +85,7 @@ class Assets implements ConsoleClass
    */
   public static function loadSound(path:String):Future<openfl.media.Sound>
   {
-    return openfl.utils.Assets.loadSound(path);
+    return openfl.utils.Assets.loadSound(path, false);
   }
 
   /**
@@ -96,7 +96,7 @@ class Assets implements ConsoleClass
    */
   public static function getMusic(path:String):openfl.media.Sound
   {
-    return openfl.utils.Assets.getMusic(path);
+    return openfl.utils.Assets.getMusic(path, false);
   }
 
   /**
@@ -106,7 +106,7 @@ class Assets implements ConsoleClass
    */
   public static function loadMusic(path:String):Future<openfl.media.Sound>
   {
-    return openfl.utils.Assets.loadMusic(path);
+    return openfl.utils.Assets.loadMusic(path, false);
   }
 
   /**
@@ -117,7 +117,7 @@ class Assets implements ConsoleClass
    */
   public static function getBitmapData(path:String, useCache:Bool = true):openfl.display.BitmapData
   {
-    return openfl.utils.Assets.getBitmapData(path, useCache);
+    return openfl.utils.Assets.getBitmapData(path, false);
   }
 
   /**
@@ -127,7 +127,7 @@ class Assets implements ConsoleClass
    */
   public static function loadBitmapData(path:String):Future<openfl.display.BitmapData>
   {
-    return openfl.utils.Assets.loadBitmapData(path);
+    return openfl.utils.Assets.loadBitmapData(path, false);
   }
 
   /**

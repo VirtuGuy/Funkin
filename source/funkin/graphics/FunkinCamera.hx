@@ -132,11 +132,12 @@ class FunkinCamera extends FlxCamera
   {
     var shouldUseShader:Bool = (!hasKhronosExtension && KHR_BLEND_MODES.contains(blend)) || SHADER_REQUIRED_BLEND_MODES.contains(blend);
 
+    _cameraTexture.drawCameraScreen(this);
+
     // Fallback to the shader implementation if the device doesn't support `KHR_blend_equation_advanced`, or if
     // the specified blend mode requires the shader.
     if (shouldUseShader)
     {
-      _cameraTexture.drawCameraScreen(this);
       _backgroundFrame.frame.set(0, 0, this.width, this.height);
 
       // Clear the camera's graphics
